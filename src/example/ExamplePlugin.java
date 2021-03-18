@@ -15,6 +15,10 @@ public class ExamplePlugin extends Plugin{
     //called when game initializes
     @Override
     public void init(){
+        Events.on(PlayerBanEvent.class, event -> {
+            Log.info("The event triggered");
+        });
+
         //listen for a block selection event
         Events.on(BuildSelectEvent.class, event -> {
             if(!event.breaking && event.builder != null && event.builder.buildPlan() != null && event.builder.buildPlan().block == Blocks.thoriumReactor && event.builder.isPlayer()){
